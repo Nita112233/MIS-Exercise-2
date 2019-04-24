@@ -390,52 +390,54 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         Log.d(TAG, "SharedPref: " + sharedPreferences.getAll());
     }
 
-    private boolean LoadPreferences(){
-        sharedPreferences = getPreferences(MODE_PRIVATE);
+    //The implementation was left as values even though are not null when input into marker gives null pointer exception
+    
+//     private boolean LoadPreferences(){
+//         sharedPreferences = getPreferences(MODE_PRIVATE);
 
-        size = sharedPreferences.getInt("listSize", 0);
-        Log.d(TAG, "LoadPref int: " +size);
-        Log.d(TAG, "LoadPref: " + sharedPreferences.getAll());
-        if(size>0) {
-            for (int i = 0; i < size; i++) {
+//         size = sharedPreferences.getInt("listSize", 0);
+//         Log.d(TAG, "LoadPref int: " +size);
+//         Log.d(TAG, "LoadPref: " + sharedPreferences.getAll());
+//         if(size>0) {
+//             for (int i = 0; i < size; i++) {
 
-                Log.d(TAG, "LoadPref lat: " + sharedPreferences.getFloat("lat" + i, 0));
-                Log.d(TAG, "LoadPref long: " + sharedPreferences.getFloat("long" + i, 0));
-                Log.d(TAG, "LoadPref title: " + sharedPreferences.getString("title" + i, "NULL"));
-                //double lat = (double) sharedPreferences.getFloat("lat" + i, 0);
-                //double longit = (double) sharedPreferences.getFloat("long" + i, 0);
-                //String title = sharedPreferences.getString("title" + i, "NULL");
-                //markers.add(mMap.addMarker(new MarkerOptions()
-                //      .position(new LatLng(lat, longit))
-                //    .title(title)));
+//                 Log.d(TAG, "LoadPref lat: " + sharedPreferences.getFloat("lat" + i, 0));
+//                 Log.d(TAG, "LoadPref long: " + sharedPreferences.getFloat("long" + i, 0));
+//                 Log.d(TAG, "LoadPref title: " + sharedPreferences.getString("title" + i, "NULL"));
+//                 //double lat = (double) sharedPreferences.getFloat("lat" + i, 0);
+//                 //double longit = (double) sharedPreferences.getFloat("long" + i, 0);
+//                 //String title = sharedPreferences.getString("title" + i, "NULL");
+//                 //markers.add(mMap.addMarker(new MarkerOptions()
+//                 //      .position(new LatLng(lat, longit))
+//                 //    .title(title)));
 
-                MarkerOptions markerOps = new MarkerOptions()
-                        .title(sharedPreferences.getString("title" + i, "NULL"))
-                        .position(new LatLng(sharedPreferences.getFloat("lat" + i, 0), sharedPreferences.getFloat("long" + i, 0)));
-                mMap.addMarker(markerOps);
-                //loc.add(new LatLng(lat, longit));
-            }
-            return true;
-        }
-        else
-            return false;
-    }
+//                 MarkerOptions markerOps = new MarkerOptions()
+//                         .title(sharedPreferences.getString("title" + i, "NULL"))
+//                         .position(new LatLng(sharedPreferences.getFloat("lat" + i, 0), sharedPreferences.getFloat("long" + i, 0)));
+//                 mMap.addMarker(markerOps);
+//                 //loc.add(new LatLng(lat, longit));
+//             }
+//             return true;
+//         }
+//         else
+//             return false;
+//     }
 
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        if(LoadPreferences()) {
-            checkCondition();
-        }
-    }
-    @Override
-    protected void onStart() {
-        super.onStart();
-        if(LoadPreferences()) {
-            checkCondition();
-        }
-    }
+//     @Override
+//     protected void onResume() {
+//         super.onResume();
+//         if(LoadPreferences()) {
+//             checkCondition();
+//         }
+//     }
+//     @Override
+//     protected void onStart() {
+//         super.onStart();
+//         if(LoadPreferences()) {
+//             checkCondition();
+//         }
+//     }
 
     @Override
     public void onBackPressed(){
